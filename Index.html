@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arham.dev — Digital Services</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Consolas, "Courier New", monospace;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070b10;
+    color:#e7edf5;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(7,11,16,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #1d2a38;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#42ff9b;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#fff;
+}
+
+nav a{
+    color:#9da9b7;
+    text-decoration:none;
+    margin-left:25px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#42ff9b;
+}
+
+/* HERO */
+.hero{
+    min-height:88vh;
+    padding:100px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.terminal-line{
+    color:#42ff9b;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,90px);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#42ff9b;
+}
+
+.hero p{
+    color:#9da9b7;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 22px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    display:inline-block;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:#42ff9b;
+    color:#061009;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(66,255,155,.3);
+}
+
+.btn-secondary{
+    border:1px solid #334454;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    border-color:#42ff9b;
+    color:#42ff9b;
+}
+
+/* TERMINAL */
+.terminal{
+    width:min(500px,100%);
+    background:#0c1219;
+    border:1px solid #243443;
+    border-radius:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    overflow:hidden;
+}
+
+.terminal-top{
+    padding:12px 16px;
+    border-bottom:1px solid #243443;
+    color:#718096;
+}
+
+.dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#536170;
+    margin-right:6px;
+}
+
+.terminal-body{
+    padding:25px;
+    min-height:280px;
+    line-height:2;
+}
+
+.green{color:#42ff9b;}
+.blue{color:#6db7ff;}
+.gray{color:#738191;}
+.white{color:#fff;}
+
+/* SECTIONS */
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.section-title span{
+    color:#42ff9b;
+}
+
+.section-subtitle{
+    color:#738191;
+    margin-bottom:45px;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    background:#0c1219;
+    border:1px solid #243443;
+    padding:30px;
+    border-radius:12px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#42ff9b;
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#8794a3;
+    line-height:1.7;
+}
+
+.price{
+    margin-top:25px;
+    font-size:27px;
+    color:#42ff9b;
+    font-weight:bold;
+}
+
+/* PORTFOLIO */
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.project{
+    min-height:180px;
+    padding:25px;
+    border:1px solid #243443;
+    background:#0c1219;
+    border-radius:10px;
+}
+
+.project small{
+    color:#42ff9b;
+}
+
+.project h3{
+    margin:15px 0;
+}
+
+/* ORDER */
+.order-box{
+    max-width:750px;
+    margin:auto;
+    background:#0c1219;
+    border:1px solid #243443;
+    padding:35px;
+    border-radius:12px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    color:#8d9aaa;
+    margin-bottom:8px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    background:#070b10;
+    color:#fff;
+    border:1px solid #2a3a4b;
+    border-radius:6px;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:#42ff9b;
+}
+
+.submit{
+    width:100%;
+    border:0;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:8px;
+}
+
+/* BILL */
+#bill{
+    display:none;
+    margin-top:30px;
+    background:#070b10;
+    border:1px dashed #42ff9b;
+    padding:25px;
+    border-radius:8px;
+}
+
+.bill-title{
+    color:#42ff9b;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.bill-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px solid #1d2833;
+}
+
+.total{
+    color:#42ff9b;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.remaining{
+    color:#ffcc66;
+    font-weight:bold;
+}
+
+.whatsapp{
+    margin-top:20px;
+    text-align:center;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    border-top:1px solid #182532;
+}
+
+.contact p{
+    color:#8794a3;
+    margin:10px;
+}
+
+.social{
+    margin-top:25px;
+}
+
+.social a{
+    color:#42ff9b;
+    text-decoration:none;
+    margin:0 12px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    color:#526170;
+    border-top:1px solid #182532;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav .links{
+        display:none;
+    }
+
+    .hero{
+        padding:70px 6%;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    section{
+        padding:70px 6%;
+    }
+
+    .services,
+    .portfolio{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">arham<span>.dev</span></div>
+
+    <div class="links">
+        <a href="#services">services</a>
+        <a href="#portfolio">portfolio</a>
+        <a href="#order">order</a>
+        <a href="#contact">contact</a>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="terminal-line">
+            &gt; initializing arham.dev...
+        </div>
+
+        <h1>
+            Build.<br>
+            Create.<br>
+            <span>Launch.</span>
+        </h1>
+
+        <p>
+            Affordable digital services for businesses, students
+            and creators. Websites, presentations and custom games.
+        </p>
+
+        <div class="buttons">
+            <a href="#order" class="btn btn-primary">
+                Start an Order
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+                View Services
+            </a>
+        </div>
+
+    </div>
+
+
+    <!-- TERMINAL -->
+    <div class="terminal">
+
+        <div class="terminal-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            &nbsp; arham.dev
+        </div>
+
+        <div class="terminal-body">
+
+            <div>
+                <span class="green">arham@dev</span>:~$
+                <span class="white">whoami</span>
+            </div>
+
+            <div class="gray">
+                Digital Creator & Developer
+            </div>
+
+            <br>
+
+            <div>
+                <span class="green">arham@dev</span>:~$
+                <span class="white">services --list</span>
+            </div>
+
+            <div class="blue">
+                [01] Websites
+            </div>
+
+            <div class="blue">
+                [02] Presentations
+            </div>
+
+            <div class="blue">
+                [03] Games
+            </div>
+
+            <br>
+
+            <div>
+                <span class="green">status:</span>
+                <span class="white">AVAILABLE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section id="services">
+
+    <h2 class="section-title">
+        ./<span>services</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Simple. Affordable. Professional.
+    </p>
+
+
+    <div class="services">
+
+        <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>Websites</h3>
+
+            <p>
+                Modern responsive websites for businesses,
+                portfolios and personal projects.
+            </p>
+
+            <div class="price">
+                Rs. 999+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎮</div>
+
+            <h3>Games</h3>
+
+            <p>
+                Custom browser games and simple interactive
+                game projects.
+            </p>
+
+            <div class="price">
+                Rs. 1,499+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📊</div>
+
+            <h3>Presentations</h3>
+
+            <p>
+                Clean and attractive presentations for school,
+                business and personal projects.
+            </p>
+
+            <div class="price">
+                Rs. 499+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+
+    <h2 class="section-title">
+        ./<span>portfolio</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Some things we can build.
+    </p>
+
+
+    <div class="portfolio">
+
+        <div class="project">
+            <small>PROJECT_01</small>
+            <h3>Business Website</h3>
+            <p class="gray">
+                Responsive website for a local business.
+            </p>
+        </div>
+
+        <div class="project">
+            <small>PROJECT_02</small>
+            <h3>Presentation Design</h3>
+            <p class="gray">
+                Modern presentation for school or business.
+            </p>
+        </div>
+
+        <div class="project">
+            <small>PROJECT_03</small>
+            <h3>Browser Game</h3>
+            <p class="gray">
+                Custom HTML-based interactive game.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ORDER -->
+<section id="order">
+
+    <h2 class="section-title">
+        ./<span>place_order</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Enter your details and generate your order bill.
+    </p>
+
+
+    <div class="order-box">
+
+        <div class="form-group">
+
+            <label>Customer Name</label>
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Enter your name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Service</label>
+
+            <select id="service">
+
+                <option value="Website" data-price="999">
+                    Website — Rs. 999
+                </option>
+
+                <option value="Game" data-price="1499">
+                    Game — Rs. 1,499
+                </option>
+
+                <option value="Presentation" data-price="499">
+                    Presentation — Rs. 499
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Number / Quantity</label>
+
+            <input
+                id="quantity"
+                type="number"
+                min="1"
+                value="1"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Advance Paid</label>
+
+            <input
+                id="advance"
+                type="number"
+                min="0"
+                value="0"
+                placeholder="Enter advance"
+            >
+
+        </div>
+
+
+        <button
+            class="btn btn-primary submit"
+            onclick="generateBill()"
+        >
+            Generate Order Bill
+        </button>
+
+
+        <!-- BILL -->
+        <div id="bill">
+
+            <div class="bill-title">
+                ARHAM.DEV // ORDER BILL
+            </div>
+
+            <div class="bill-row">
+                <span>Order ID</span>
+                <span id="billID"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Customer</span>
+                <span id="billName"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Service</span>
+                <span id="billService"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Number</span>
+                <span id="billQuantity"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Price / Item</span>
+                <span id="billPrice"></span>
+            </div>
+
+            <div class="bill-row total">
+                <span>Total</span>
+                <span id="billTotal"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Advance</span>
+                <span id="billAdvance"></span>
+            </div>
+
+            <div class="bill-row remaining">
+                <span>Remaining</span>
+                <span id="billRemaining"></span>
+            </div>
+
+            <div class="bill-row">
+                <span>Status</span>
+                <span>ORDER RECEIVED</span>
+            </div>
+
+
+            <div class="whatsapp">
+
+                <a
+                    id="whatsappButton"
+                    class="btn btn-primary"
+                    target="_blank"
+                >
+                    Send Order on WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+
+    <h2 class="section-title">
+        ./<span>contact</span>
+    </h2>
+
+    <p>
+        Ready to start your project?
+    </p>
+
+    <p>
+        WhatsApp: <strong>03138230176</strong>
+    </p>
+
+    <p>
+        Instagram: <strong>@arham.developer</strong>
+    </p>
+
+
+    <div class="social">
+
+        <a
+            href="https://wa.me/923138230176"
+            target="_blank"
+        >
+            WhatsApp
+        </a>
+
+        <a
+            href="https://instagram.com/arham.developer"
+            target="_blank"
+        >
+            Instagram
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026 arham.dev — Built with code.
+
+</footer>
+
+
+<script>
+
+function generateBill(){
+
+    const name =
+        document.getElementById("customerName").value.trim();
+
+    const service =
+        document.getElementById("service");
+
+    const quantity =
+        parseInt(document.getElementById("quantity").value) || 1;
+
+    const advance =
+        parseFloat(document.getElementById("advance").value) || 0;
+
+
+    if(!name){
+
+        alert("Please enter customer name.");
+
+        return;
+
+    }
+
+
+    const selected =
+        service.options[service.selectedIndex];
+
+    const serviceName =
+        selected.value;
+
+    const price =
+        parseFloat(selected.dataset.price);
+
+
+    const total =
+        price * quantity;
+
+    const remaining =
+        Math.max(total - advance, 0);
+
+
+    const orderID =
+        "ARH-" +
+        Date.now().toString().slice(-6);
+
+
+    document.getElementById("billID").textContent =
+        orderID;
+
+    document.getElementById("billName").textContent =
+        name;
+
+    document.getElementById("billService").textContent =
+        serviceName;
+
+    document.getElementById("billQuantity").textContent =
+        quantity;
+
+    document.getElementById("billPrice").textContent =
+        "Rs. " + price.toLocaleString();
+
+    document.getElementById("billTotal").textContent =
+        "Rs. " + total.toLocaleString();
+
+    document.getElementById("billAdvance").textContent =
+        "Rs. " + advance.toLocaleString();
+
+    document.getElementById("billRemaining").textContent =
+        "Rs. " + remaining.toLocaleString();
+
+
+    document.getElementById("bill").style.display =
+        "block";
+
+
+    const message =
+`ARHAM.DEV ORDER
+
+Order ID: ${orderID}
+Customer: ${name}
+Service: ${serviceName}
+Number: ${quantity}
+Price: Rs. ${price.toLocaleString()}
+Total: Rs. ${total.toLocaleString()}
+Advance: Rs. ${advance.toLocaleString()}
+Remaining: Rs. ${remaining.toLocaleString()}
+
+Status: ORDER RECEIVED`;
+
+
+    const whatsappURL =
+        "https://wa.me/923138230176?text=" +
+        encodeURIComponent(message);
+
+
+    document.getElementById("whatsappButton").href =
+        whatsappURL;
+
+
+    document.getElementById("bill")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+}
+
+</script>
+
+</body>
+</html>
